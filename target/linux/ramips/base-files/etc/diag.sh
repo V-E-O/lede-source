@@ -24,6 +24,7 @@ get_status_led() {
 	e1700|\
 	ex3700|\
 	fonera20n|\
+	kn|\
 	kn_rc|\
 	kn_rf|\
 	kng_rc|\
@@ -116,6 +117,7 @@ get_status_led() {
 	dap-1350|\
 	na930|\
 	pbr-m1|\
+	rt-ac51u|\
 	rt-n13u|\
 	rt-n14u|\
 	rt-n15|\
@@ -164,6 +166,9 @@ get_status_led() {
 	miwifi-nano)
 		status_led="$board:blue:status"
 		;;
+	gl-mt300n-v2)
+		status_led="$board:red:wlan"
+		;;
 	m4-4M|\
 	m4-8M)
 		status_led="m4:blue:status"
@@ -207,6 +212,7 @@ get_status_led() {
 		;;
 	mzk-ex300np|\
 	rt-n10-plus|\
+	tew-638apb-v2|\
 	tew-691gr|\
 	tew-692gr|\
 	ur-326n4g|\

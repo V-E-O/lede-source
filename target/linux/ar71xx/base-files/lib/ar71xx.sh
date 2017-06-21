@@ -309,6 +309,9 @@ tplink_board_detect() {
 	"49000002")
 		model="TP-Link TL-WDR4900"
 		;;
+	"640000"*)
+		model="TP-Link TL-MR6400"
+		;;
 	"65000002")
 		model="TP-Link TL-WDR6500"
 		;;
@@ -436,6 +439,9 @@ ar71xx_board_detect() {
 		;;
 	*"AP90Q")
 		name="ap90q"
+		;;
+	*"Archer C25 v1")
+		name="archer-c25-v1"
 		;;
 	*"Archer C5")
 		name="archer-c5"
@@ -622,6 +628,9 @@ ar71xx_board_detect() {
 	*"EmbWir-Dorin-Router")
 		name="ew-dorin-router"
 		;;
+	*"ENS202EXT")
+		name="ens202ext"
+		;;
 	*"EPG5000")
 		name="epg5000"
 		;;
@@ -650,6 +659,9 @@ ar71xx_board_detect() {
 		;;
 	*"GL-MIFI")
 		name="gl-mifi"
+		;;
+	*"HiveAP-121")
+		name="hiveap-121"
 		;;
 	*"HiWiFi HC6361")
 		name="hiwifi-hc6361"
@@ -810,6 +822,9 @@ ar71xx_board_detect() {
 		;;
 	*"R6100")
 		name="r6100"
+		;;
+	*"Rambutan"*)
+		name="rambutan"
 		;;
 	*"RE450")
 		name="re450"
@@ -1010,6 +1025,9 @@ ar71xx_board_detect() {
 	*"TL-MR3420 v2")
 		name="tl-mr3420-v2"
 		;;
+	*TL-MR6400)
+		name="tl-mr6400"
+		;;
 	*"TL-WA701ND v2")
 		name="tl-wa701nd-v2"
 		;;
@@ -1094,6 +1112,9 @@ ar71xx_board_detect() {
 	*"TL-WR720N"*)
 		name="tl-wr720n-v3"
 		;;
+	*"TL-WR740N/ND v6")
+		name="tl-wr740n-v6"
+		;;
 	*"TL-WR741ND")
 		name="tl-wr741nd"
 		;;
@@ -1148,6 +1169,9 @@ ar71xx_board_detect() {
 	*"TL-WR941ND")
 		name="tl-wr941nd"
 		;;
+	*"TL-WR942N v1")
+		name="tl-wr942n-v1"
+		;;
 	*"Tube2H")
 		name="tube2h"
 		;;
@@ -1157,7 +1181,7 @@ ar71xx_board_detect() {
 	*"UniFi AP Pro")
 		name="uap-pro"
 		;;
-	*"UniFi-AC-LITE")
+	*"UniFi-AC-LITE/MESH")
 		name="unifiac-lite"
 		;;
 	*"UniFi-AC-PRO")

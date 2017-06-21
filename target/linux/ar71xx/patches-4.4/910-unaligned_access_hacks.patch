@@ -310,7 +310,7 @@
  	if (t->parms.flags & IP6_TNL_F_USE_ORIG_FWMARK)
 --- a/net/ipv6/ip6_tunnel.c
 +++ b/net/ipv6/ip6_tunnel.c
-@@ -1407,7 +1407,7 @@ ip6ip6_tnl_xmit(struct sk_buff *skb, str
+@@ -1409,7 +1409,7 @@ ip6ip6_tnl_xmit(struct sk_buff *skb, str
  
  	dsfield = ipv6_get_dsfield(ipv6h);
  	if (t->parms.flags & IP6_TNL_F_USE_ORIG_TCLASS)
@@ -610,7 +610,7 @@
  			goto next_ht;
 --- a/net/ipv6/ip6_offload.c
 +++ b/net/ipv6/ip6_offload.c
-@@ -222,7 +222,7 @@ static struct sk_buff **ipv6_gro_receive
+@@ -223,7 +223,7 @@ static struct sk_buff **ipv6_gro_receive
  			continue;
  
  		iph2 = (struct ipv6hdr *)(p->data + off);
@@ -621,7 +621,7 @@
  		 * XXX skbs on the gro_list have all been parsed and pulled
 --- a/include/net/addrconf.h
 +++ b/include/net/addrconf.h
-@@ -43,7 +43,7 @@ struct prefix_info {
+@@ -45,7 +45,7 @@ struct prefix_info {
  	__be32			reserved2;
  
  	struct in6_addr		prefix;
@@ -838,7 +838,7 @@
  
 --- a/net/ipv4/tcp_input.c
 +++ b/net/ipv4/tcp_input.c
-@@ -3818,14 +3818,16 @@ static bool tcp_parse_aligned_timestamp(
+@@ -3819,14 +3819,16 @@ static bool tcp_parse_aligned_timestamp(
  {
  	const __be32 *ptr = (const __be32 *)(th + 1);
  

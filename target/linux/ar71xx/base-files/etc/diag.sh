@@ -36,6 +36,7 @@ get_status_led() {
 	db120|\
 	dr344|\
 	tew-632brp|\
+	tl-wr942n-v1|\
 	wpj344|\
 	zbt-we1526)
 		status_led="$board:green:status"
@@ -50,6 +51,7 @@ get_status_led() {
 	ap135-020)
 		status_led="ap135:green:status"
 		;;
+	archer-c25-v1|\
 	archer-c59-v1|\
 	archer-c60-v1|\
 	mr12|\
@@ -175,6 +177,9 @@ get_status_led() {
 	eap300v2)
 		status_led="engenius:blue:power"
 		;;
+	ens202ext)
+		status_led="engenius:amber:power"
+		;;
 	eap7660d)
 		status_led="$board:green:ds4"
 		;;
@@ -195,6 +200,10 @@ get_status_led() {
 		;;
 	esr900)
 		status_led="engenius:amber:power"
+		;;
+	hiveap-121|\
+	nbg6716)
+		status_led="$board:white:power"
 		;;
 	hiwifi-hc6361)
 		status_led="hiwifi:blue:system"
@@ -247,9 +256,6 @@ get_status_led() {
 		;;
 	nbg460n_550n_550nh)
 		status_led="nbg460n:green:power"
-		;;
-	nbg6716)
-		status_led="$board:white:power"
 		;;
 	om2p|\
 	om2pv2|\
@@ -365,6 +371,9 @@ get_status_led() {
 	tl-wa860re)
 		status_led="tp-link:green:power"
 		;;
+	tl-mr6400)
+		status_led="tp-link:white:power"
+		;;
 	tl-mr3220|\
 	tl-mr3220-v2|\
 	tl-mr3420|\
@@ -381,6 +390,7 @@ get_status_led() {
 	tl-wr1043nd|\
 	tl-wr1043nd-v2|\
 	tl-wr1043nd-v4|\
+	tl-wr740n-v6|\
 	tl-wr741nd|\
 	tl-wr741nd-v4|\
 	tl-wa801nd-v3|\

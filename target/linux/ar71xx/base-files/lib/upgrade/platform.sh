@@ -206,6 +206,7 @@ platform_check_image() {
 	ap132|\
 	ap531b0|\
 	ap90q|\
+	archer-c25-v1|\
 	archer-c59-v1|\
 	archer-c60-v1|\
 	bullet-m|\
@@ -236,6 +237,7 @@ platform_check_image() {
 	dr531|\
 	dragino2|\
 	ebr-2310-c1|\
+	ens202ext|\
 	epg5000|\
 	esr1750|\
 	esr900|\
@@ -270,6 +272,7 @@ platform_check_image() {
 	tew-712br|\
 	tew-732br|\
 	tew-823dru|\
+	tl-wr942n-v1|\
 	unifi-outdoor|\
 	unifiac-lite|\
 	unifiac-pro|\
@@ -398,6 +401,7 @@ platform_check_image() {
 	tl-mr3220|\
 	tl-mr3420-v2|\
 	tl-mr3420|\
+	tl-mr6400|\
 	tl-wa701nd-v2|\
 	tl-wa7210n-v2|\
 	tl-wa750re|\
@@ -426,6 +430,7 @@ platform_check_image() {
 	tl-wr703n|\
 	tl-wr710n|\
 	tl-wr720n-v3|\
+	tl-wr740n-v6|\
 	tl-wr741nd-v4|\
 	tl-wr741nd|\
 	tl-wr802n-v1|\
@@ -519,8 +524,10 @@ platform_check_image() {
 		return $?
 		;;
 	c-60|\
+	hiveap-121|\
 	nbg6716|\
 	r6100|\
+	rambutan|\
 	wndr3700v4|\
 	wndr4300)
 		nand_do_platform_check $board $1
@@ -661,8 +668,10 @@ platform_pre_upgrade() {
 
 	case "$board" in
 	c-60|\
+	hiveap-121|\
 	nbg6716|\
 	r6100|\
+	rambutan|\
 	rb-411|\
 	rb-411u|\
 	rb-433|\
@@ -751,7 +760,8 @@ platform_do_upgrade() {
 		platform_do_upgrade_allnet "0x9f080000" "$ARGV"
 		;;
 	cap4200ag|\
-	eap300v2)
+	eap300v2|\
+	ens202ext)
 		platform_do_upgrade_allnet "0xbf0a0000" "$ARGV"
 		;;
 	dir-825-b1|\
