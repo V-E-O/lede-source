@@ -21,6 +21,7 @@ PKG_LICENSE:=GPL-2.0
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(BUILD_VARIANT)/$(PKG_NAME)-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/kernel.mk
 
 define Package/iproute2/Default
   SECTION:=net
@@ -84,6 +85,7 @@ ifeq ($(BUILD_VARIANT),tiny)
 endif
 
 define Build/Configure
+	$(call Build/Configure/Default)
 	$(SED) "s,-I/usr/include/db3,," $(PKG_BUILD_DIR)/Makefile
 	$(SED) "s,^KERNEL_INCLUDE.*,KERNEL_INCLUDE=$(LINUX_DIR)/include," \
 		$(PKG_BUILD_DIR)/Makefile

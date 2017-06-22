@@ -782,6 +782,8 @@ define Device/mynet-n750
   SEAMA_SIGNATURE := wrgnd13_wd_av
 endef
 
+TARGET_DEVICES += dir-869-a1 mynet-n600 mynet-n750
+
 define Device/qihoo-c301
   $(Device/seama)
   DEVICE_TITLE := Qihoo C301
@@ -791,7 +793,8 @@ define Device/qihoo-c301
   MTDPARTS := spi0.0:256k(u-boot)ro,64k(u-boot-env),64k(devdata),64k(devconf),15744k(firmware),64k(warm_start),64k(action_image_config),64k(radiocfg)ro;spi0.1:15360k(upgrade2),1024k(privatedata)
   SEAMA_SIGNATURE := wrgac26_qihoo360_360rg
 endef
-TARGET_DEVICES += dir-869-a1 mynet-n600 mynet-n750 qihoo-c301
+
+TARGET_DEVICES += qihoo-c301
 
 define Device/dap-2695-a1
   DEVICE_TITLE := D-Link DAP-2695 rev. A1
@@ -878,3 +881,35 @@ define Device/zbt-we1526
   IMAGE/sysupgrade.bin := append-rootfs | pad-rootfs | pad-to $$$$(ROOTFS_SIZE) | append-kernel | check-size $$$$(IMAGE_SIZE)
 endef
 TARGET_DEVICES += zbt-we1526
+
+define Device/qihoo-c301-flash1-16m
+  $(Device/seama)
+  DEVICE_TITLE := Qihoo C301 (Use 1st flash)
+  DEVICE_PACKAGES :=  kmod-usb-core kmod-usb2 uboot-envtools kmod-usb-ledtrig-usbport kmod-ath9k kmod-ath10k ath10k-firmware-qca988x
+  BOARDNAME := QIHOO-C301
+  IMAGE_SIZE := 15744k
+  MTDPARTS := spi0.0:256k(u-boot)ro,64k(u-boot-env),64k(devdata),64k(devconf),15744k(firmware),64k(warm_start),64k(action_image_config),64k(radiocfg)ro;spi0.1:15360k(upgrade2),1024k(privatedata)
+  SEAMA_SIGNATURE := wrgac26_qihoo360_360rg
+endef
+
+define Device/qihoo-c301-flash2-16m
+  $(Device/seama)
+  DEVICE_TITLE := Qihoo C301 (Use 2nd flash)
+  DEVICE_PACKAGES :=  kmod-usb-core kmod-usb2 uboot-envtools kmod-usb-ledtrig-usbport kmod-ath9k kmod-ath10k ath10k-firmware-qca988x
+  BOARDNAME := QIHOO-C301
+  IMAGE_SIZE := 15360k
+  MTDPARTS := spi0.0:256k(u-boot),64k(u-boot-env),64k(devdata),64k(devconf),15744k(upgrade1),64k(warm_start),64k(action_image_config),64k(radiocfg);spi0.1:15360k(firmware),1024k(privatedata)
+  SEAMA_SIGNATURE := wrgac26_qihoo360_360rg
+endef
+
+define Device/qihoo-c301-dual-flash-32m
+  $(Device/seama)
+  DEVICE_TITLE := Qihoo C301 (Use dual flash)
+  DEVICE_PACKAGES :=  kmod-usb-core kmod-usb2 uboot-envtools kmod-usb-ledtrig-usbport kmod-ath9k kmod-ath10k ath10k-firmware-qca988x
+  BOARDNAME := QIHOO-C301
+  IMAGE_SIZE := 32256k
+  MTDPARTS := flash:256k(u-boot),64k(u-boot-env),64k(devdata),64k(devconf),32256k(firmware),64k(radiocfg)
+  SEAMA_SIGNATURE := wrgac26_qihoo360_360rg
+endef
+
+TARGET_DEVICES += qihoo-c301-flash1-16m qihoo-c301-flash2-16m qihoo-c301-dual-flash-32m

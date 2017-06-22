@@ -3,7 +3,7 @@ config BUSYBOX_DEFAULT_HAVE_DOT_CONFIG
 	default y
 config BUSYBOX_DEFAULT_DESKTOP
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_EXTRA_COMPAT
 	bool
 	default n
@@ -237,7 +237,7 @@ config BUSYBOX_DEFAULT_LOCALE_SUPPORT
 	default n
 config BUSYBOX_DEFAULT_UNICODE_SUPPORT
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_UNICODE_USING_LOCALE
 	bool
 	default n
@@ -246,25 +246,25 @@ config BUSYBOX_DEFAULT_FEATURE_CHECK_UNICODE_IN_ENV
 	default n
 config BUSYBOX_DEFAULT_SUBST_WCHAR
 	int
-	default 0
+	default 195101
 config BUSYBOX_DEFAULT_LAST_SUPPORTED_WCHAR
 	int
-	default 0
+	default 195101
 config BUSYBOX_DEFAULT_UNICODE_COMBINING_WCHARS
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_UNICODE_WIDE_WCHARS
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_UNICODE_BIDI_SUPPORT
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_UNICODE_NEUTRAL_TABLE
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_UNICODE_PRESERVE_BROKEN
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_FEATURE_NON_POSIX_CP
 	bool
 	default y
@@ -936,10 +936,10 @@ config BUSYBOX_DEFAULT_START_STOP_DAEMON
 	default y
 config BUSYBOX_DEFAULT_FEATURE_START_STOP_DAEMON_FANCY
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_FEATURE_START_STOP_DAEMON_LONG_OPTIONS
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_WHICH
 	bool
 	default y
@@ -2532,13 +2532,13 @@ config BUSYBOX_DEFAULT_FEATURE_PS_WIDE
 	default y
 config BUSYBOX_DEFAULT_FEATURE_PS_LONG
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_FEATURE_PS_TIME
 	bool
 	default n
 config BUSYBOX_DEFAULT_FEATURE_PS_ADDITIONAL_COLUMNS
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_FEATURE_PS_UNUSUAL_SYSTEMS
 	bool
 	default n
@@ -2550,7 +2550,7 @@ config BUSYBOX_DEFAULT_PWDX
 	default n
 config BUSYBOX_DEFAULT_RENICE
 	bool
-	default n
+	default y
 config BUSYBOX_DEFAULT_SMEMCAP
 	bool
 	default n
