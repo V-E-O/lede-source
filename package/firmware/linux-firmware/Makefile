@@ -12,8 +12,8 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
-PKG_SOURCE_DATE:=2017-05-19
-PKG_SOURCE_VERSION:=df40d15d6ad617e72ce7ea00b91d9117d92dcccc
+PKG_SOURCE_DATE:=2017-06-22
+PKG_SOURCE_VERSION:=7d2c913dcd1be083350d97a8cb1eba24cfacbc8a
 #PKG_MIRROR_HASH:=
 
 PKG_MAINTAINER:=Felix Fietkau <nbd@nbd.name>
