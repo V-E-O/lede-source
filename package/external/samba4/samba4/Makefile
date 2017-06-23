@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=samba4
-PKG_VERSION:=4.6.4
+PKG_VERSION:=4.6.5
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:= \
