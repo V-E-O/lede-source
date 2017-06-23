@@ -1,0 +1,49 @@
+# Global parameters
+[global]
+	netbios name = |NAME| 
+	interfaces = |INTERFACES|
+	server string = |DESCRIPTION|
+	unix charset = |CHARSET|
+	workgroup = |WORKGROUP|
+	security = USER
+	map to guest = Bad User
+	guest account = nobody
+	# passdb backend = tdbsam:/etc/samba/passdb.tdb
+	# passdb backend = smbpasswd
+	enable core files = No
+	#max xmit = 65535
+	socket options = TCP_NODELAY IPTOS_LOWDELAY
+	load printers = No
+	disable spoolss = Yes
+	printcap name = /dev/null
+	preferred master = Yes
+	#domain master = Yes
+	dns proxy = No
+	#idmap config * : backend = tdb
+	invalid users = root
+	#create mask = 0777
+	#directory mask = 0777
+	#force create mode = 0777
+	#force directory mode = 0777
+	inherit owner = Yes
+	smb encrypt = No
+	#strict allocate = Yes
+	use sendfile = Yes
+	large readwrite = yes
+	#strict locking = No
+	blocking locks = No
+	#block size = 4096
+	#aio read size = 0
+	#aio write size = 0
+	# syslog = 1
+	# syslog only = yes
+	dos filemode = Yes
+	#Samba,FAT,NTFS
+	fstype = FAT
+	#disable netbios = Yes
+
+#server services = s3fs, nbt, dnsupdate, dns, winbind, rpc
+server services = s3fs, nbt
+#dcerpc endpoint servers = epmapper, wkssvc, rpcecho, samr, netlogon, lsarpc, spoolss, drsuapi, dssetup, unixinfo, browser, eventlog6, backupkey, dnsserver
+dcerpc endpoint servers = browser
+#messaging : messaging dgm cleanup interval = 60

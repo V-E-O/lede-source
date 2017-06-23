@@ -1,0 +1,12 @@
+--- a/nsswitch/wins.c
++++ b/nsswitch/wins.c
+@@ -39,6 +39,9 @@ static pthread_mutex_t wins_nss_mutex =
+ #define INADDRSZ 4
+ #endif
+ 
++# define NETDB_INTERNAL -1  /* See errno.  */
++# define NETDB_SUCCESS  0   /* No problem.  */
++
+ NSS_STATUS _nss_wins_gethostbyname_r(const char *hostname,
+ 				     struct hostent *he,
+ 				     char *buffer,
