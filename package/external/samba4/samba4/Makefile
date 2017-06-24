@@ -24,8 +24,7 @@ PKG_MD5SUM:=2ae8ce2862d8bfa95e4681371ebb1623
 PKG_LICENSE:=GPLv3
 PKG_LICENSE_FILES:=COPYING
 
-#PKG_BUILD_DEPENDS:=python-base heimdal
-PKG_BUILD_DEPENDS:=python-light heimdal
+PKG_BUILD_DEPENDS:=python-light python-dev heimdal libcap
 
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
@@ -40,10 +39,7 @@ define Package/samba4-server
   CATEGORY:=Network
   TITLE:=Samba $(PKG_VERSION) SMB/CIFS server
   URL:=http://www.samba.org/
-  DEPENDS:=+python-light +zlib +libpthread +libpopt +e2fsprogs
-#DEPENDS:=+python-base +zlib +libpthread +libpopt +e2fsprogs +PACKAGE_samba43-server_asyncio:libaio
-# DEPENDS:=+python-light +zlib +libpthread +libpopt +e2fsprogs +PACKAGE_samba43-server_asyncio:libaio
-#DEPENDS+= +libreadline +libuuid +libtirpc libtirpc
+  DEPENDS:=+python-light +python-dev +zlib +libpthread +libpopt +e2fsprogs +libcap
 endef
 
 define Package/samba4-server/config
@@ -67,13 +63,12 @@ EXTRA_LDFLAGS += -Wl,--gc-sections
 # Use target python2-config to retrive cflags, ldflags, libs, etc.
 # Must have python2 patched to make python2-config works
 
-#	_python_sysroot="$(STAGING_DIR)" \
-	_python_prefix="/usr" \
-	_python_exec_prefix="/usr/bin" \
-	PYTHON="$(STAGING_DIR_HOST)/bin/python2"
-	
 CONFIGURE_VARS += \
-	PYTHON_CONFIG="$(STAGING_DIR)/usr/bin/python2-config" \
+        _python_sysroot="$(STAGING_DIR)" \
+        _python_prefix="/usr" \
+        _python_exec_prefix="/usr/bin" \
+        PYTHON="$(STAGING_DIR_HOSTPKG)/bin/python2"
+	PYTHON_CONFIG="$(STAGING_DIR_HOST)/usr/bin/python2-config" \
 	python_LDFLAGS="" \
 	python_LIBDIR=""
 
