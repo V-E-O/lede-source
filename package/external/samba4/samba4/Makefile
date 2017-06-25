@@ -39,7 +39,7 @@ define Package/samba4-server
   CATEGORY:=Network
   TITLE:=Samba $(PKG_VERSION) SMB/CIFS server
   URL:=http://www.samba.org/
-  DEPENDS:=+python-light +python-dev +zlib +libpthread +libpopt +e2fsprogs +libcap
+  DEPENDS:=+python-light +zlib +libpthread +libpopt +e2fsprogs +libcap
 endef
 
 define Package/samba4-server/config
