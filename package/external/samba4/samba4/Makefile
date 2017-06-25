@@ -24,7 +24,7 @@ PKG_MD5SUM:=2ae8ce2862d8bfa95e4681371ebb1623
 PKG_LICENSE:=GPLv3
 PKG_LICENSE_FILES:=COPYING
 
-PKG_BUILD_DEPENDS:=python-light python-dev heimdal libcap
+PKG_BUILD_DEPENDS:=python-light heimdal libcap
 
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1
