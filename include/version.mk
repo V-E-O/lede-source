@@ -10,7 +10,7 @@
 # REVISION:=x
 # SOURCE_DATE_EPOCH:=x
 
-RELEASE:=Reboot by wongsyrone
+RELEASE:=Reboot
 
 PKG_CONFIG_DEPENDS += \
 	CONFIG_VERSION_BUG_URL \
