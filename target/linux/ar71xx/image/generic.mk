@@ -92,6 +92,16 @@ define Device/ap90q
 endef
 TARGET_DEVICES += ap90q
 
+define Device/arduino-yun
+  DEVICE_TITLE := Arduino Yun
+  DEVICE_PACKAGES := kmod-usb-core kmod-usb2
+  BOARDNAME := Yun
+  IMAGE_SIZE := 15936k
+  CONSOLE = ttyATH0,250000
+  MTDPARTS := spi0.0:256k(u-boot)ro,64k(u-boot-env),15936k(firmware),64k(nvram),64k(art)ro
+endef
+TARGET_DEVICES += arduino-yun
+
 define Device/bsb
   DEVICE_TITLE := Smart Electronics Black Swift board
   DEVICE_PACKAGES := kmod-usb-core kmod-usb2
@@ -276,21 +286,13 @@ define Device/mr12
   IMAGE/sysupgrade.bin := append-rootfs | pad-rootfs | pad-to $$$$(ROOTFS_SIZE) | append-kernel | check-size $$$$(IMAGE_SIZE)
   IMAGES := kernel.bin rootfs.bin sysupgrade.bin
 endef
-TARGET_DEVICES += mr12
 
 define Device/mr16
+  $(Device/mr12)
   DEVICE_TITLE := Meraki MR16
-  DEVICE_PACKAGES := kmod-spi-gpio
   BOARDNAME := MR16
-  ROOTFS_SIZE := 13440k
-  IMAGE_SIZE := 15680k
-  MTDPARTS := spi0.0:256k(u-boot)ro,256k(u-boot-env)ro,13440k(rootfs),2240k(kernel),64k(mac),128k(art)ro,15680k@0x80000(firmware)
-  IMAGE/kernel.bin := append-kernel
-  IMAGE/rootfs.bin := append-rootfs | pad-rootfs
-  IMAGE/sysupgrade.bin := append-rootfs | pad-rootfs | pad-to $$$$(ROOTFS_SIZE) | append-kernel | check-size $$$$(IMAGE_SIZE)
-  IMAGES := kernel.bin rootfs.bin sysupgrade.bin
 endef
-TARGET_DEVICES += mr16
+TARGET_DEVICES += mr12 mr16
 
 define Device/dr344
   DEVICE_TITLE := Wallys DR344
@@ -782,8 +784,6 @@ define Device/mynet-n750
   SEAMA_SIGNATURE := wrgnd13_wd_av
 endef
 
-TARGET_DEVICES += dir-869-a1 mynet-n600 mynet-n750
-
 define Device/qihoo-c301
   $(Device/seama)
   DEVICE_TITLE := Qihoo C301
@@ -793,8 +793,7 @@ define Device/qihoo-c301
   MTDPARTS := spi0.0:256k(u-boot)ro,64k(u-boot-env),64k(devdata),64k(devconf),15744k(firmware),64k(warm_start),64k(action_image_config),64k(radiocfg)ro;spi0.1:15360k(upgrade2),1024k(privatedata)
   SEAMA_SIGNATURE := wrgac26_qihoo360_360rg
 endef
-
-TARGET_DEVICES += qihoo-c301
+TARGET_DEVICES += dir-869-a1 mynet-n600 mynet-n750 qihoo-c301
 
 define Device/dap-2695-a1
   DEVICE_TITLE := D-Link DAP-2695 rev. A1
@@ -882,34 +881,15 @@ define Device/zbt-we1526
 endef
 TARGET_DEVICES += zbt-we1526
 
-define Device/qihoo-c301-flash1-16m
-  $(Device/seama)
-  DEVICE_TITLE := Qihoo C301 (Use 1st flash)
-  DEVICE_PACKAGES :=  kmod-usb-core kmod-usb2 uboot-envtools kmod-usb-ledtrig-usbport kmod-ath9k kmod-ath10k ath10k-firmware-qca988x
-  BOARDNAME := QIHOO-C301
-  IMAGE_SIZE := 15744k
-  MTDPARTS := spi0.0:256k(u-boot)ro,64k(u-boot-env),64k(devdata),64k(devconf),15744k(firmware),64k(warm_start),64k(action_image_config),64k(radiocfg)ro;spi0.1:15360k(upgrade2),1024k(privatedata)
-  SEAMA_SIGNATURE := wrgac26_qihoo360_360rg
+define Device/fritz300e
+  DEVICE_TITLE := AVM FRITZ!WLAN Repeater 300E
+  DEVICE_PACKAGES := fritz-tffs rssileds -swconfig -uboot-envtools
+  BOARDNAME := FRITZ300E
+  SUPPORTED_DEVICES := fritz300e
+  IMAGE_SIZE := 15232k
+  KERNEL := kernel-bin | patch-cmdline | lzma | eva-image
+  IMAGE/sysupgrade.bin := append-kernel | pad-to 64k | \
+	append-squashfs-fakeroot-be | pad-to 256 | \
+	append-rootfs | pad-rootfs | append-metadata | check-size $$$$(IMAGE_SIZE)
 endef
-
-define Device/qihoo-c301-flash2-16m
-  $(Device/seama)
-  DEVICE_TITLE := Qihoo C301 (Use 2nd flash)
-  DEVICE_PACKAGES :=  kmod-usb-core kmod-usb2 uboot-envtools kmod-usb-ledtrig-usbport kmod-ath9k kmod-ath10k ath10k-firmware-qca988x
-  BOARDNAME := QIHOO-C301
-  IMAGE_SIZE := 15360k
-  MTDPARTS := spi0.0:256k(u-boot),64k(u-boot-env),64k(devdata),64k(devconf),15744k(upgrade1),64k(warm_start),64k(action_image_config),64k(radiocfg);spi0.1:15360k(firmware),1024k(privatedata)
-  SEAMA_SIGNATURE := wrgac26_qihoo360_360rg
-endef
-
-define Device/qihoo-c301-dual-flash-32m
-  $(Device/seama)
-  DEVICE_TITLE := Qihoo C301 (Use dual flash)
-  DEVICE_PACKAGES :=  kmod-usb-core kmod-usb2 uboot-envtools kmod-usb-ledtrig-usbport kmod-ath9k kmod-ath10k ath10k-firmware-qca988x
-  BOARDNAME := QIHOO-C301
-  IMAGE_SIZE := 32256k
-  MTDPARTS := flash:256k(u-boot),64k(u-boot-env),64k(devdata),64k(devconf),32256k(firmware),64k(radiocfg)
-  SEAMA_SIGNATURE := wrgac26_qihoo360_360rg
-endef
-
-TARGET_DEVICES += qihoo-c301-flash1-16m qihoo-c301-flash2-16m qihoo-c301-dual-flash-32m
+TARGET_DEVICES += fritz300e
