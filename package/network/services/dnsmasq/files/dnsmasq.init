@@ -1043,6 +1043,12 @@ boot()
 	start "$@"
 }
 
+add_ptohosts()
+{
+	[ -n "$(cat /etc/hosts |grep "p.to")" ] && sed -i '/p.to/d' /etc/hosts
+	echo "$(uci get network.lan.ipaddr) p.to" >>/etc/hosts
+}
+
 start_service() {
 	local instance="$1"
 	local instance_found=0
@@ -1069,6 +1075,8 @@ start_service() {
 	else
 		config_foreach dnsmasq_start dnsmasq
 	fi
+
+	add_ptohosts
 }
 
 reload_service() {

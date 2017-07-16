@@ -26,3 +26,15 @@
 	use sendfile = yes
 	writeable = yes
 	bind interfaces only = yes
+
+	# Perfomance tweak
+	read size = 65536
+	read prediction = yes
+	socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
+	write raw = yes
+	read raw = yes
+	aio read size = 16384
+	aio write size = 16384
+	write cache size = 262144
+	getwd cache = yes
+	large readwrite = yes

@@ -75,22 +75,48 @@ smb_add_share() {
 	config_get create_mask $1 create_mask
 	config_get dir_mask $1 dir_mask
 	config_get browseable $1 browseable
+	config_get sharepasswd $1 sharepasswd
 
 	[ -z "$name" -o -z "$path" ] && return
 
 	echo -e "\n[$name]\n\tpath = $path" >> /var/etc/smb.conf
 	[ -n "$users" ] && echo -e "\tvalid users = $users" >> /var/etc/smb.conf
 	[ -n "$read_only" ] && echo -e "\tread only = $read_only" >> /var/etc/smb.conf
-	[ -n "$guest_ok" ] && echo -e "\tguest ok = $guest_ok" >> /var/etc/smb.conf
+	[ -n "$guest_ok" ] && echo -e "\tguest ok = $guest_ok\n\tpublic = $guest_ok" >> /var/etc/smb.conf
 	[ -n "$create_mask" ] && echo -e "\tcreate mask = $create_mask" >> /var/etc/smb.conf
 	[ -n "$dir_mask" ] && echo -e "\tdirectory mask = $dir_mask" >> /var/etc/smb.conf
 	[ -n "$browseable" ] && echo -e "\tbrowseable = $browseable" >> /var/etc/smb.conf
+	
+	if [ -n "$sharepasswd" ] && [ -n "$users" ] && [ "$users" = "root" ]; then
+		let sharepw_num+=1
+		sharepw=$sharepasswd
+	fi	
+
+}
+set_sharepw() {	
+
+	if [ "$sharepw_num" -gt 0 ]; then
+		[ -z "$(cat /etc/samba/smb.conf |grep "#invalid users = root")" ] && \
+			sed -i 's/invalid users = root/#invalid users = root/' /etc/samba/smb.conf
+		[ -z "$(cat /etc/samba/smb.conf.template |grep "#invalid users = root")" ] && \
+			sed -i 's/invalid users = root/#invalid users = root/' /etc/samba/smb.conf.template
+		(echo $sharepw;echo $sharepw) | smbpasswd -as root
+	else
+		[ -n "$(cat /etc/samba/smb.conf |grep "#invalid users = root")" ] && \
+			sed -i 's/#invalid users = root/invalid users = root/' /etc/samba/smb.conf
+		[ -n "$(cat /etc/samba/smb.conf.template |grep "#invalid users = root")" ] && \
+			sed -i 's/#invalid users = root/invalid users = root/' /etc/samba/smb.conf.template
+		[ -n "$(cat /etc/samba/smbpasswd | grep root)" ] && smbpasswd -x root
+	fi
 }
 
 init_config() {
+	local sharepw_num=0
+	local sharepw
 	config_load samba
 	config_foreach smb_header samba
 	config_foreach smb_add_share sambashare
+	set_sharepw
 }
 
 service_triggers() {
