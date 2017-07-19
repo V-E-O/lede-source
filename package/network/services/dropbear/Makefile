@@ -86,6 +86,8 @@ define Build/Configure
 	# Enable faster ciphers
 	$(SED) 's,\/\*#define DROPBEAR_BLOWFISH\*\/,#define DROPBEAR_BLOWFISH,g' \
 		$(PKG_BUILD_DIR)/options.h
+	$(SED) 's,\/\*#define DROPBEAR_ENABLE_CBC_MODE\*\/,#define DROPBEAR_ENABLE_CBC_MODE,g' \
+		$(PKG_BUILD_DIR)/options.h
 	$(SED) 's,\/\* #define DROPBEAR_NONE_CIPHER \*\/,#define DROPBEAR_NONE_CIPHER,g' \
 		$(PKG_BUILD_DIR)/options.h
 
