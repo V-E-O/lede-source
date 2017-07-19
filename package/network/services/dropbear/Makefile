@@ -90,6 +90,12 @@ TARGET_LDFLAGS += -Wl,--gc-sections
 define Build/Configure
 	$(Build/Configure/Default)
 
+	# Enable faster ciphers
+	$(SED) 's,\/\*#define DROPBEAR_BLOWFISH\*\/,#define DROPBEAR_BLOWFISH,g' \
+		$(PKG_BUILD_DIR)/options.h
+	$(SED) 's,\/\* #define DROPBEAR_NONE_CIPHER \*\/,#define DROPBEAR_NONE_CIPHER,g' \
+		$(PKG_BUILD_DIR)/options.h
+
 	$(SED) 's,^#define DEFAULT_PATH .*$$$$,#define DEFAULT_PATH "$(TARGET_INIT_PATH)",g' \
 		$(PKG_BUILD_DIR)/options.h
 
