@@ -16,12 +16,12 @@ get_status_led() {
 	3g-6200n|\
 	ar670w|\
 	ar725w|\
-	br-6425|\
 	br-6475nd|\
 	c50|\
 	dch-m225|\
 	dir-860l-b1|\
 	e1700|\
+	ex2700|\
 	ex3700|\
 	fonera20n|\
 	kn|\
@@ -42,7 +42,8 @@ get_status_led() {
 	wndr3700v5|\
 	x5|\
 	x8|\
-	xdxrn502j)
+	xdxrn502j|\
+	wn3000rpv3)
 		status_led="$board:green:power"
 		;;
 	3g-6200nl)
@@ -52,13 +53,11 @@ get_status_led() {
 	cs-qr10|\
 	d105|\
 	dcs-930l-b1|\
-	ex2700|\
 	hlk-rm04|\
 	jhr-n825r|\
 	mpr-a1|\
 	mpr-a2|\
-	mzk-ex750np|\
-	wn3000rpv3)
+	mzk-ex750np)
 		status_led="$board:red:power"
 		;;
 	ai-br100|\
@@ -77,6 +76,7 @@ get_status_led() {
 	dir-620-a1|\
 	dir-620-d1|\
 	dwr-512-b|\
+	gb-pc1|\
 	hpm|\
 	hw550-3g|\
 	mac1200rv2|\
@@ -119,6 +119,7 @@ get_status_led() {
 	dap-1350|\
 	na930|\
 	pbr-m1|\
+	re350-v1|\
 	rt-ac51u|\
 	rt-n13u|\
 	rt-n14u|\
@@ -157,6 +158,11 @@ get_status_led() {
 	hc5962)
 		status_led="$board:white:status"
 		;;
+	k2p|\
+	m3|\
+	miwifi-nano)
+		status_led="$board:blue:status"
+		;;
 	linkits7688| \
 	linkits7688d)
 		[ "$1" = "upgrade" ] && status_led="mediatek:orange:wifi"
@@ -164,16 +170,15 @@ get_status_led() {
 	m2m)
 		status_led="$board:blue:wifi"
 		;;
-	m3|\
-	miwifi-nano)
-		status_led="$board:blue:status"
-		;;
 	gl-mt300n-v2)
 		status_led="$board:red:wlan"
 		;;
 	m4-4M|\
 	m4-8M)
 		status_led="m4:blue:status"
+		;;
+	mir3g)
+		status_led="$board:yellow:status"
 		;;
 	miwifi-mini|\
 	zte-q7)
@@ -237,6 +242,9 @@ get_status_led() {
 		;;
 	vocore2)
 		status_led="$board:fuchsia:status"
+		;;
+	vocore2lite)
+		status_led="$board:green:status"
 		;;
 	w306r-v20|\
 	witi|\
