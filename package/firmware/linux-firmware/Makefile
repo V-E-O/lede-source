@@ -12,12 +12,12 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
-PKG_SOURCE_DATE:=2017-06-22
-PKG_SOURCE_VERSION:=7d2c913dcd1be083350d97a8cb1eba24cfacbc8a
+PKG_SOURCE_DATE:=2017-08-29
+PKG_SOURCE_VERSION:=9d40a17beaf271e6ad47a5e714a296100eef4692
 #PKG_MIRROR_HASH:=
 
 PKG_MAINTAINER:=Felix Fietkau <nbd@nbd.name>
-PKG_GIT_OPTS:= --depth 1
+#PKG_GIT_OPTS:= --depth 1
 
 SCAN_DEPS = *.mk
 
