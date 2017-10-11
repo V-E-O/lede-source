@@ -1,4 +1,4 @@
-From ab8ce9e9c6e89b50fda04a8ebd5af04fa2142fea Mon Sep 17 00:00:00 2001
+From 7aa5470c2c09265902b5e4289afa82e4e7c2987e Mon Sep 17 00:00:00 2001
 From: Eric Dumazet <edumazet@google.com>
 Date: Sat, 3 Dec 2016 11:14:57 -0800
 Subject: [PATCH 08/10] tcp: tsq: move tsq_flags close to sk_wmem_alloc

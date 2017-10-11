@@ -1,4 +1,4 @@
-From bda25879334f00b1a6b67cd2fc01def14209273c Mon Sep 17 00:00:00 2001
+From 75eefc6c59fd2c5f1ab95a3a113c217237d12a31 Mon Sep 17 00:00:00 2001
 From: Eric Dumazet <edumazet@google.com>
 Date: Sat, 3 Dec 2016 11:14:54 -0800
 Subject: [PATCH 05/10] tcp: tsq: add a shortcut in tcp_small_queue_check()

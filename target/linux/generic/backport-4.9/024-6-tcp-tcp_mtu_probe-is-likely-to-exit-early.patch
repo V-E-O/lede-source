@@ -1,4 +1,4 @@
-From fed2b6c2229db5220a7ddc1dbdfd0c24504e756b Mon Sep 17 00:00:00 2001
+From 12a59abc22d6664f7d3944f625ceefee92de8820 Mon Sep 17 00:00:00 2001
 From: Eric Dumazet <edumazet@google.com>
 Date: Sat, 3 Dec 2016 11:14:55 -0800
 Subject: [PATCH 06/10] tcp: tcp_mtu_probe() is likely to exit early
