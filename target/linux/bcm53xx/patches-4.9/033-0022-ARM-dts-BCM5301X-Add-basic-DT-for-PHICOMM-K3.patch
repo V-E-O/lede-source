@@ -23,13 +23,13 @@ index 0f2e27a0..a5237028 100644
 --- a/arch/arm/boot/dts/Makefile
 +++ b/arch/arm/boot/dts/Makefile
 @@ -95,6 +95,7 @@ dtb-$(CONFIG_ARCH_BCM_5301X) += \
- 	bcm4709-tplink-archer-c9-v1.dtb \
- 	bcm47094-dlink-dir-885l.dtb \
  	bcm47094-linksys-panamera.dtb \
-+	bcm47094-phicomm-k3.dtb \
  	bcm47094-luxul-xwr-3100.dtb \
  	bcm47094-netgear-r8500.dtb \
++	bcm47094-phicomm-k3.dtb \
  	bcm94708.dtb \
+ 	bcm94709.dtb \
+ 	bcm953012er.dtb \
 diff --git a/arch/arm/boot/dts/bcm47094-phicomm-k3.dts b/arch/arm/boot/dts/bcm47094-phicomm-k3.dts
 new file mode 100644
 index 00000000..ec2f9b27
